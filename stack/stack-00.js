@@ -8,46 +8,38 @@ class Node {
 class Stack {
     constructor(value) {
         const newNode = new Node(value)
+        
         this.top = newNode
         this.length = 1
     }
 
     push(value) {
-        
         const newNode = new Node(value)
-        
-        if ( this.length === 0 ) {
 
+        if ( this.length === 0 ) {
             this.top = newNode
         }
         else {
-
             newNode.next = this.top
             this.top = newNode
         }
-        
+                 
         this.length++
         return this
     }
 
     pop() {
-         if ( this.length === 0 ) return undefined
-         
-         let temp = this.top
+        if ( this.length === 0 ) return undefined
 
-         this.top = this.top.next
-         temp.next = null
+        const temp = this.top
+        this.top = this.top.next
+        temp.next = null
 
-         this.length--
-         return temp
+        this.length--
+        return temp
     }
 }
 
-let st = new Stack(0)
-
-st.push(1)
-st.push(2)
-st.push(3)
-
-
-module.exports = Stack
+let st = new Stack(10)
+st.push(5)
+st.push(0)
